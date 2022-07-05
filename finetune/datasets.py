@@ -12,12 +12,7 @@ from torchvision.transforms import Lambda, Normalize, ToTensor
 NYUD_MEAN = [0.48056951, 0.41091299, 0.39225179]
 NYUD_STD = [0.28918225, 0.29590312, 0.3093034]
 
-def create_df():
-    name = []
-    for dirname, _, filenames in os.walk(IMAGE_PATH):
-        for filename in filenames:
-            name.append(filename.split(".")[0])
-    return pd.DataFrame({"id": name}, index=np.arange(0, len(name)))
+
 
 class CustomDepthDataset(data.Dataset):
     def __init__(self, root, split="test", transform=None, limit=None):
