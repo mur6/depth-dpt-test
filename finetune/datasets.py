@@ -119,7 +119,7 @@ class Nutrition5k(data.Dataset):
 
         self.augment = A.Compose(
             [
-                A.RandomCrop(480, 480, p=1.0),
+                # A.RandomCrop(480, 480, p=1.0),
                 A.Flip(p=0.5),
                 A.Blur(blur_limit=5, p=0.5),
                 A.GaussNoise(p=0.5),
@@ -153,10 +153,12 @@ class Nutrition5k(data.Dataset):
 
     def __getitem__(self, index):
         id = self.X[index]
-        rgb_image = cv2.imread(self.img_path / f"image_{id:06}.jpg")
+        rgb_image = cv2.imread(str(self.img_path / f"image_{id:06}.jpg"))
         rgb_image = cv2.cvtColor(rgb_image, cv2.COLOR_BGR2RGB)
-        mask = cv2.imread(self.mask_path / f"image_{id:06}.png", cv2.IMREAD_GRAYSCALE)
-        depth_image = np.load(self.depth_path / f"{id:06}.npy")
+        mask = cv2.imread(
+            str(self.mask_path / f"image_{id:06}.png"), cv2.IMREAD_GRAYSCALE
+        )
+        depth_image = np.load(str(self.depth_path / f"{id:06}.npy"))
         # depth_image = cv2.imread(depth_image_path, cv2.IMREAD_UNCHANGED)
 
         inverse_depth = 1 / (depth_image + 1e-8)
