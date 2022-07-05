@@ -23,9 +23,8 @@ from sklearn.model_selection import train_test_split
 
 
 def split_data(dataset_num):
-    X_trainval, X_test = train_test_split(
-        range(dataset_num), test_size=0.1, random_state=19
-    )
+    data = list(range(dataset_num))
+    X_trainval, X_test = train_test_split(data, test_size=0.1, random_state=19)
     X_train, X_val = train_test_split(X_trainval, test_size=0.15, random_state=19)
     return X_train, X_val, X_test
 
@@ -40,10 +39,10 @@ print("Test Size    : ", len(X_test))
 
 
 # datasets
-from finetune.datasets import SimpleDepthDataset
+from finetune.datasets import SimpleDepthDataset, Nutrition5k
 
-train_set = SimpleDepthDataset(root_dir, X_train)
-val_set = SimpleDepthDataset(root_dir, X_val)
+train_set = Nutrition5k("train", root_dir, X_train)
+val_set = Nutrition5k("val", root_dir, X_val)
 
 # train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
 # val_loader = DataLoader(val_set, batch_size=batch_size, shuffle=True)
