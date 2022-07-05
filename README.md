@@ -9,5 +9,7 @@ $ source .venv/bin/activate.fish
 
 ## Run
 https://github.com/simonmeister/pytorch-mono-depth
-[simonmeister/pytorch-mono-depth: Monocular depth prediction with PyTorch](https://github.com/simonmeister/pytorch-mono-depth)
 
+## 参考サイト
+- [simonmeister/pytorch-mono-depth: Monocular depth prediction with PyTorch](https://github.com/simonmeister/pytorch-mono-depth)
+- [food-analytic/food-depth-dpt: Fine-tuning Dense Prediction Transformer (DPT) on Nutrition5k for food depth estimation](https://github.com/food-analytic/food-depth-dpt)
