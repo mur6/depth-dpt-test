@@ -8,3 +8,6 @@ $ source .venv/bin/activate.fish
 ```
 
 ## Run
+https://github.com/simonmeister/pytorch-mono-depth
+[simonmeister/pytorch-mono-depth: Monocular depth prediction with PyTorch](https://github.com/simonmeister/pytorch-mono-depth)
+
