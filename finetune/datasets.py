@@ -103,6 +103,7 @@ class Nutrition5k(data.Dataset):
         split,
         dataset_path,
         X,
+        *,
         image_size=(384, 384),
     ):
 

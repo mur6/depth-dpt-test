@@ -12,13 +12,14 @@ class DPTModule(LightningModule):
         self,
         model_path,
         dataset_path,
+        dataset_num=800,
         scale=0.0000305,
         shift=0.1378,
         batch_size=16,
         base_lr=1e-5,
         max_lr=1e-4,
-        num_workers=2,
-        image_size=(384, 384),
+        num_workers=1,
+        image_size=(224, 224),
         **kwargs
     ):
 
@@ -45,6 +46,15 @@ class DPTModule(LightningModule):
         self._loss_function = SILog
 
         self.model.pretrained.requires_grad_(False)
+
+        from sklearn.model_selection import train_test_split
+
+        X_trainval, self.X_test = train_test_split(
+            list(range(dataset_num)), test_size=0.1, random_state=19
+        )
+        self.X_train, self.X_val = train_test_split(
+            X_trainval, test_size=0.15, random_state=19
+        )
 
     def forward(self, x):
         return self.model(x)
@@ -88,14 +98,10 @@ class DPTModule(LightningModule):
     def setup(self, stage=None):
         if stage == "fit" or stage is None:
             self._nutrition5k_train = Nutrition5k(
-                "train",
-                self._dataset_path,
-                self._image_size,
+                "train", self._dataset_path, self.X_train, image_size=self._image_size
             )
             self._nutrition5k_val = Nutrition5k(
-                "val",
-                self._dataset_path,
-                self._image_size,
+                "val", self._dataset_path, self.X_val, image_size=self._image_size
             )
 
     def train_dataloader(self):

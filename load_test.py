@@ -42,7 +42,9 @@ print("Test Size    : ", len(X_test))
 from finetune.datasets import SimpleDepthDataset, Nutrition5k
 
 train_set = Nutrition5k("train", root_dir, X_train)
+print(len(train_set))
 val_set = Nutrition5k("val", root_dir, X_val)
+print(len(val_set))
 
 # train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
 # val_loader = DataLoader(val_set, batch_size=batch_size, shuffle=True)
