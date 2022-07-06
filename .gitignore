@@ -2,3 +2,5 @@
 *.pyc
 train/
 weights/
+models/
+food-depth-dpt/
