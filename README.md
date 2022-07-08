@@ -7,8 +7,13 @@ $ source .venv/bin/activate.fish
 (.venv) $ pip install -r requirements/dev.txt
 ```
 
-## Run
-https://github.com/simonmeister/pytorch-mono-depth
+## 学習
+see [](./notebooks/train_DPT_depth.ipynb).
+
+## 推論
+```
+PYTHONPATH=. python scripts/infer.py [SAMPLE_DIR]
+```
 
 ## 参考サイト
 - [simonmeister/pytorch-mono-depth: Monocular depth prediction with PyTorch](https://github.com/simonmeister/pytorch-mono-depth)
