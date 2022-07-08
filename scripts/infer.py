@@ -113,7 +113,10 @@ def main(image_paths):
     print("finished")
 
 
-samples_base = "/Users/taichi.muraki/workspace/machine-learning/mur6-lightning-flash-test/data/samples"
-samples_base = Path(samples_base)
+import sys
 
-main(list(samples_base.glob("*.jpeg")))
+if __name__ == "__main__":
+    samples_dir = sys.argv[1]
+    samples_dir = Path(samples_dir)
+    sample_images = list(samples_dir.glob("*.jpeg"))
+    main(sample_images)
