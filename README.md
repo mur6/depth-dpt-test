@@ -8,7 +8,7 @@ $ source .venv/bin/activate.fish
 ```
 
 ## 学習
-see [](./notebooks/train_DPT_depth.ipynb).
+See [notebooks/train_DPT_depth.ipynb](./notebooks/train_DPT_depth.ipynb).
 
 ## 推論
 ```
