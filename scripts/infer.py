@@ -1,4 +1,12 @@
+from pathlib import Path
+
+import cv2
+import matplotlib.pyplot as plt
+import torch
+from torchvision.transforms import Compose
+
 from dpt.models import DPTDepthModel
+from dpt.transforms import NormalizeImage, PrepareForNet, Resize
 
 config = {
     "base_scale": 0.0000305,
@@ -7,13 +15,8 @@ config = {
     "image_size": (384, 384),
     "early_stopping_patience": 10,
     "num_workers": 0,
-    "model_path": f"./models/2022_07_05_10_05_31.pt",
+    "model_path": "./models/2022_07_05_10_05_31.pt",
 }
-import cv2
-import torch
-from torchvision.transforms import Compose
-from dpt.transforms import Resize, NormalizeImage, PrepareForNet
-import matplotlib.pyplot as plt
 
 
 def read_image(path):
@@ -109,8 +112,6 @@ def main(image_paths):
 
     print("finished")
 
-
-from pathlib import Path
 
 samples_base = "/Users/taichi.muraki/workspace/machine-learning/mur6-lightning-flash-test/data/samples"
 samples_base = Path(samples_base)
